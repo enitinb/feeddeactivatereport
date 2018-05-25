@@ -25,7 +25,7 @@ public class FeedDeActivateReport {
 		JSONParser jsonParser = new JSONParser();
 
 		//This is the cruise feed from s3 archive for that day which already executed.
-		FileReader reader = new FileReader("/Users/niteuseb/Documents/Business/Sapient_Project/Carnival/HAL_FEED_ISSUES/5_24_2018/hal_1527170401182_cruise-en_en_US.json");
+		FileReader reader = new FileReader("hal_1527170401182_cruise-en_en_US.json");
 
 		//Read cruise JSON file
 		Object obj = jsonParser.parse(reader);
@@ -52,7 +52,7 @@ public class FeedDeActivateReport {
 		List<String> itinCruiseQBList = new ArrayList<String>();
 
 		//This is the aem query builder json results as is saved as json file
-		FileReader readerQB = new FileReader("/Users/niteuseb/Documents/Business/Sapient_Project/Carnival/HAL_FEED_ISSUES/5_24_2018/querybuilder.5_24.json");
+		FileReader readerQB = new FileReader("querybuilder.5_24.json");
 		
 		Object objQB = jsonParser.parse(readerQB);
 		JSONObject cruiseListQBObj = (JSONObject) objQB;
@@ -90,7 +90,8 @@ public class FeedDeActivateReport {
 
 		/** Final results **/
 		
-		System.out.println("removed---" + itinCruiseList.retainAll(itinCruiseQBList));
+		//Java retain all method between original feed cruise list and query builder list
+		System.out.println("Removed successfully---" + itinCruiseList.retainAll(itinCruiseQBList));
 		System.out.println("activation list ---" + itinCruiseList);
 		
 
